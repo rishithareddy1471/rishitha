@@ -1,0 +1,516 @@
+DOCTYPE <html>
+ <html lang="en"
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeMaster - Programming Education Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .code-editor {
+            font-family: 'Courier New', monospace;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border: none;
+            outline: none;
+            resize: none;
+            line-height: 1.5;
+        }
+        
+        .syntax-highlight {
+            color: #569cd6;
+        }
+        
+        .error-line {
+            background-color: rgba(255, 0, 0, 0.1);
+            border-left: 3px solid #ff0000;
+        }
+        
+        .success-animation {
+            animation: successPulse 0.6s ease-in-out;
+        }
+        
+        @keyframes successPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .progress-bar {
+            transition: width 0.3s ease-in-out;
+        }
+        
+        .lesson-card {
+            transition: all 0.3s ease;
+        }
+        
+        .lesson-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .tab-active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .code-output {
+            background: #0d1117;
+            color: #58a6ff;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-white shadow-lg border-b-4 border-indigo-500">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">CM</span>
+                    </div>
+                    <h1 class="text-2xl font-bold text-gray-800">CodeMaster</h1>
+                </div>
+                <nav class="flex items-center space-x-6">
+                    <button class="text-gray-600 hover:text-indigo-600 font-medium">Dashboard</button>
+                    <button class="text-gray-600 hover:text-indigo-600 font-medium">Lessons</button>
+                    <button class="text-gray-600 hover:text-indigo-600 font-medium">Community</button>
+                    <div class="flex items-center space-x-2 bg-indigo-100 px-3 py-2 rounded-full">
+                        <div class="w-8 h-8 bg-indigo-500 rounded-full flex items-center justify-center">
+                            <span class="text-white text-sm font-bold">JS</span>
+                        </div>
+                        <span class="text-indigo-700 font-medium">Level 3</span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-6 py-8">
+        <!-- Progress Section -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-xl font-bold text-gray-800">Current Lesson: JavaScript Functions</h2>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-gray-600">Progress: 65%</span>
+                    <div class="w-32 h-2 bg-gray-200 rounded-full">
+                        <div class="progress-bar w-16 h-2 bg-gradient-to-r from-green-400 to-blue-500 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center space-x-6">
+                <div class="flex items-center space-x-2">
+                    <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <span class="text-sm text-gray-600">8 Completed</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                    <span class="text-sm text-gray-600">Current Exercise</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <div class="w-3 h-3 bg-gray-300 rounded-full"></div>
+                    <span class="text-sm text-gray-600">4 Remaining</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Panel - Lesson Content -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">📚 Lesson: Creating Functions</h3>
+                    <div class="space-y-4 text-sm text-gray-600">
+                        <p>Functions are reusable blocks of code that perform specific tasks. They help organize your code and avoid repetition.</p>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+                            <h4 class="font-semibold text-blue-800 mb-2">💡 Key Concepts:</h4>
+                            <ul class="space-y-1 text-blue-700">
+                                <li>• Function declaration syntax</li>
+                                <li>• Parameters and arguments</li>
+                                <li>• Return statements</li>
+                                <li>• Function scope</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-gray-800 mb-2">Example:</h4>
+                            <code class="text-sm text-purple-600">
+                                function greet(name) {<br>
+                                &nbsp;&nbsp;return "Hello, " + name + "!";<br>
+                                }
+                            </code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exercise Instructions -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">🎯 Exercise</h3>
+                    <div class="space-y-3 text-sm text-gray-600">
+                        <p><strong>Task:</strong> Create a function called <code class="bg-gray-100 px-2 py-1 rounded">calculateArea</code> that takes two parameters (length and width) and returns their product.</p>
+                        
+                        <div class="bg-yellow-50 p-3 rounded-lg border-l-4 border-yellow-400">
+                            <p class="text-yellow-800"><strong>Hint:</strong> Use the <code>function</code> keyword and don't forget the <code>return</code> statement!</p>
+                        </div>
+                        
+                        <div class="flex items-center space-x-2 mt-4">
+                            <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                            <span class="text-xs text-gray-500">Difficulty: Beginner</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center Panel - Code Editor -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <!-- Editor Tabs -->
+                    <div class="flex border-b bg-gray-50">
+                        <button class="tab-active px-6 py-3 text-sm font-medium border-r">main.js</button>
+                        <button class="px-6 py-3 text-sm font-medium text-gray-600 hover:text-gray-800 border-r">test.js</button>
+                        <button class="px-6 py-3 text-sm font-medium text-gray-600 hover:text-gray-800">output</button>
+                    </div>
+                    
+                    <!-- Code Editor -->
+                    <div class="relative">
+                        <div class="absolute top-4 left-4 text-xs text-gray-400 font-mono">
+                            <div>1</div>
+                            <div>2</div>
+                            <div>3</div>
+                            <div>4</div>
+                            <div>5</div>
+                            <div>6</div>
+                            <div>7</div>
+                            <div>8</div>
+                        </div>
+                        <textarea 
+                            id="codeEditor" 
+                            class="code-editor w-full h-80 p-4 pl-12 text-sm"
+                            placeholder="// Write your function here..."
+                        >// Create a function called calculateArea
+function calculateArea(length, width) {
+    // Your code here
+    
+}
+
+// Test your function
+console.log(calculateArea(5, 3));</textarea>
+                    </div>
+                    
+                    <!-- Editor Controls -->
+                    <div class="flex items-center justify-between p-4 bg-gray-50 border-t">
+                        <div class="flex items-center space-x-4">
+                            <button id="runCode" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium flex items-center space-x-2">
+                                <span>▶</span>
+                                <span>Run Code</span>
+                            </button>
+                            <button id="checkCode" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium">
+                                Check Solution
+                            </button>
+                            <button class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg font-medium">
+                                Reset
+                            </button>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div id="statusIndicator" class="w-3 h-3 bg-gray-400 rounded-full"></div>
+                            <span id="statusText" class="text-sm text-gray-600">Ready</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Output Panel -->
+                <div class="bg-white rounded-xl shadow-lg mt-6 overflow-hidden">
+                    <div class="bg-gray-800 px-4 py-2 flex items-center justify-between">
+                        <h4 class="text-white font-medium">Console Output</h4>
+                        <button class="text-gray-400 hover:text-white text-sm">Clear</button>
+                    </div>
+                    <div id="output" class="code-output p-4 h-32 overflow-y-auto text-sm">
+                        <div class="text-gray-400">// Output will appear here when you run your code</div>
+                    </div>
+                </div>
+
+                <!-- Analysis Panel -->
+                <div id="analysisPanel" class="bg-white rounded-xl shadow-lg mt-6 p-6 hidden">
+                    <h4 class="text-lg font-bold text-gray-800 mb-4">🔍 Code Analysis</h4>
+                    <div id="analysisContent" class="space-y-4">
+                        <!-- Analysis results will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Section - Learning Path -->
+        <div class="mt-12">
+            <h3 class="text-2xl font-bold text-gray-800 mb-6">🚀 Your Learning Path</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="lesson-card bg-white rounded-xl shadow-lg p-6 border-l-4 border-green-500">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-gray-800">Variables & Types</h4>
+                        <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                            <span class="text-white text-sm">✓</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">Master the basics of data storage and manipulation.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-green-600 font-medium">Completed</span>
+                        <span class="text-xs text-gray-500">8/8 exercises</span>
+                    </div>
+                </div>
+
+                <div class="lesson-card bg-white rounded-xl shadow-lg p-6 border-l-4 border-yellow-500">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-gray-800">Functions</h4>
+                        <div class="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
+                            <span class="text-white text-sm">65%</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">Learn to create reusable code blocks.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-yellow-600 font-medium">In Progress</span>
+                        <span class="text-xs text-gray-500">8/12 exercises</span>
+                    </div>
+                </div>
+
+                <div class="lesson-card bg-white rounded-xl shadow-lg p-6 border-l-4 border-gray-300">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-gray-800">Arrays & Objects</h4>
+                        <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+                            <span class="text-gray-600 text-sm">🔒</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">Work with complex data structures.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500 font-medium">Locked</span>
+                        <span class="text-xs text-gray-500">0/10 exercises</span>
+                    </div>
+                </div>
+
+                <div class="lesson-card bg-white rounded-xl shadow-lg p-6 border-l-4 border-gray-300">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-gray-800">DOM Manipulation</h4>
+                        <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+                            <span class="text-gray-600 text-sm">🔒</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">Make your web pages interactive.</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500 font-medium">Locked</span>
+                        <span class="text-xs text-gray-500">0/15 exercises</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Code Editor Functionality
+        const codeEditor = document.getElementById('codeEditor');
+        const runButton = document.getElementById('runCode');
+        const checkButton = document.getElementById('checkCode');
+        const output = document.getElementById('output');
+        const statusIndicator = document.getElementById('statusIndicator');
+        const statusText = document.getElementById('statusText');
+        const analysisPanel = document.getElementById('analysisPanel');
+        const analysisContent = document.getElementById('analysisContent');
+
+        // Real-time code analysis
+        codeEditor.addEventListener('input', function() {
+            analyzeCode();
+        });
+
+        function analyzeCode() {
+            const code = codeEditor.value;
+            
+            // Simple syntax checking
+            const errors = [];
+            const warnings = [];
+            const suggestions = [];
+
+            // Check for function declaration
+            if (!code.includes('function calculateArea')) {
+                errors.push('Missing function declaration: calculateArea');
+            }
+
+            // Check for parameters
+            if (!code.includes('(length, width)') && !code.includes('(width, length)')) {
+                errors.push('Function should accept two parameters: length and width');
+            }
+
+            // Check for return statement
+            if (!code.includes('return')) {
+                warnings.push('Consider adding a return statement to your function');
+            }
+
+            // Check for multiplication
+            if (!code.includes('*') && !code.includes('length * width') && !code.includes('width * length')) {
+                suggestions.push('Hint: Use the multiplication operator (*) to calculate area');
+            }
+
+            // Update status
+            if (errors.length > 0) {
+                statusIndicator.className = 'w-3 h-3 bg-red-500 rounded-full';
+                statusText.textContent = `${errors.length} error(s)`;
+            } else if (warnings.length > 0) {
+                statusIndicator.className = 'w-3 h-3 bg-yellow-500 rounded-full';
+                statusText.textContent = 'Warnings detected';
+            } else {
+                statusIndicator.className = 'w-3 h-3 bg-green-500 rounded-full';
+                statusText.textContent = 'Looking good!';
+            }
+
+            // Show analysis if there are issues
+            if (errors.length > 0 || warnings.length > 0 || suggestions.length > 0) {
+                showAnalysis(errors, warnings, suggestions);
+            } else {
+                analysisPanel.classList.add('hidden');
+            }
+        }
+
+        function showAnalysis(errors, warnings, suggestions) {
+            analysisPanel.classList.remove('hidden');
+            
+            let content = '';
+            
+            if (errors.length > 0) {
+                content += '<div class="bg-red-50 border-l-4 border-red-400 p-4 rounded">';
+                content += '<h5 class="font-semibold text-red-800 mb-2">❌ Errors:</h5>';
+                content += '<ul class="text-red-700 text-sm space-y-1">';
+                errors.forEach(error => {
+                    content += `<li>• ${error}</li>`;
+                });
+                content += '</ul></div>';
+            }
+
+            if (warnings.length > 0) {
+                content += '<div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">';
+                content += '<h5 class="font-semibold text-yellow-800 mb-2">⚠️ Warnings:</h5>';
+                content += '<ul class="text-yellow-700 text-sm space-y-1">';
+                warnings.forEach(warning => {
+                    content += `<li>• ${warning}</li>`;
+                });
+                content += '</ul></div>';
+            }
+
+            if (suggestions.length > 0) {
+                content += '<div class="bg-blue-50 border-l-4 border-blue-400 p-4 rounded">';
+                content += '<h5 class="font-semibold text-blue-800 mb-2">💡 Suggestions:</h5>';
+                content += '<ul class="text-blue-700 text-sm space-y-1">';
+                suggestions.forEach(suggestion => {
+                    content += `<li>• ${suggestion}</li>`;
+                });
+                content += '</ul></div>';
+            }
+
+            analysisContent.innerHTML = content;
+        }
+
+        // Run code functionality
+        runButton.addEventListener('click', function() {
+            const code = codeEditor.value;
+            output.innerHTML = '<div class="text-blue-400">Running code...</div>';
+            
+            setTimeout(() => {
+                try {
+                    // Simple code execution simulation
+                    let result = '';
+                    
+                    // Check if function is properly defined
+                    if (code.includes('function calculateArea') && code.includes('return')) {
+                        if (code.includes('length * width') || code.includes('width * length')) {
+                            result = '<div class="text-green-400">✓ 15</div>';
+                            result += '<div class="text-gray-400">// Function executed successfully!</div>';
+                        } else {
+                            result = '<div class="text-red-400">✗ undefined</div>';
+                            result += '<div class="text-gray-400">// Function returned undefined</div>';
+                        }
+                    } else {
+                        result = '<div class="text-red-400">✗ ReferenceError: calculateArea is not defined</div>';
+                    }
+                    
+                    output.innerHTML = result;
+                } catch (error) {
+                    output.innerHTML = `<div class="text-red-400">Error: ${error.message}</div>`;
+                }
+            }, 1000);
+        });
+
+        // Check solution functionality
+        checkButton.addEventListener('click', function() {
+            const code = codeEditor.value;
+            
+            // Check if solution is correct
+            const isCorrect = code.includes('function calculateArea') && 
+                            (code.includes('(length, width)') || code.includes('(width, length)')) &&
+                            code.includes('return') &&
+                            (code.includes('length * width') || code.includes('width * length'));
+            
+            if (isCorrect) {
+                // Success animation and feedback
+                checkButton.classList.add('success-animation');
+                checkButton.innerHTML = '✓ Correct!';
+                checkButton.className = 'success-animation bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg font-medium';
+                
+                // Show success message
+                analysisPanel.classList.remove('hidden');
+                analysisContent.innerHTML = `
+                    <div class="bg-green-50 border-l-4 border-green-400 p-4 rounded">
+                        <h5 class="font-semibold text-green-800 mb-2">🎉 Excellent Work!</h5>
+                        <p class="text-green-700 text-sm mb-3">Your function correctly calculates the area by multiplying length and width.</p>
+                        <div class="flex items-center space-x-4">
+                            <button class="bg-green-500 text-white px-4 py-2 rounded text-sm hover:bg-green-600">Next Exercise</button>
+                            <span class="text-green-600 text-sm">+50 XP earned!</span>
+                        </div>
+                    </div>
+                `;
+                
+                // Update progress
+                setTimeout(() => {
+                    const progressBar = document.querySelector('.progress-bar');
+                    progressBar.style.width = '20.8rem'; // 75% progress
+                }, 1000);
+                
+            } else {
+                // Show hints for improvement
+                analysisPanel.classList.remove('hidden');
+                analysisContent.innerHTML = `
+                    <div class="bg-orange-50 border-l-4 border-orange-400 p-4 rounded">
+                        <h5 class="font-semibold text-orange-800 mb-2">🤔 Not quite right</h5>
+                        <p class="text-orange-700 text-sm mb-3">Your solution needs some adjustments. Check the requirements again:</p>
+                        <ul class="text-orange-700 text-sm space-y-1 mb-3">
+                            <li>• Function name should be "calculateArea"</li>
+                            <li>• Should accept two parameters: length and width</li>
+                            <li>• Should return the product of length and width</li>
+                        </ul>
+                        <button class="bg-orange-500 text-white px-4 py-2 rounded text-sm hover:bg-orange-600">Show Hint</button>
+                    </div>
+                `;
+            }
+        });
+
+        // Initialize analysis on page load
+        analyzeCode();
+
+        // Simulate typing for demo
+        setTimeout(() => {
+            const demoCode = `// Create a function called calculateArea
+function calculateArea(length, width) {
+    return length * width;
+}
+
+// Test your function
+console.log(calculateArea(5, 3));`;
+            
+            // Uncomment the line below to see the demo typing effect
+            // typeCode(demoCode, 0);
+        }, 2000);
+
+        function typeCode(text, index) {
+            if (index < text.length) {
+                codeEditor.value = text.substring(0, index + 1);
+                analyzeCode();
+                setTimeout(() => typeCode(text, index + 1), 50);
+            }
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97e597a870ab9f43',t:'MTc1Nzc0NDk4OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
